@@ -1,0 +1,43 @@
+{
+	"schemaVersion": 1,
+	"id": "shipyardsmod",
+	"version": "${version}",
+	"name": "Shipyards Mod",
+	"description": "This is a Shipyards Mod made by Shipyards :)",
+	"authors": [
+		"Shard!",
+		"Lud!",
+		"Sisko"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.shipyardsmod.ShipyardsMod"
+		],
+		"client": [
+			"net.shipyardsmod.SecondDawnClient"
+		],
+		"fabric-datagen": [
+			"net.shipyardsmod.SecondDawnDatagen"
+		]
+	},
+	"mixins": [
+		"tutorialmod.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.14.21",
+		"minecraft": "~1.21.1",
+		"java": ">=17",
+		"fabric-api": "*",
+		"fusion": ">=1.0.0"
+
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
