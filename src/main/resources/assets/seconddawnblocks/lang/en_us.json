@@ -1832,6 +1832,42 @@
   "block.seconddawnblocks.darkgray_texturedstripe_trapdoor": "Dark Gray Textured Stripe Trapdoor",
   "block.seconddawnblocks.darkgray_texturedstripe_layer": "Dark Gray Textured Stripe Layer",
   "block.seconddawnblocks.darkgray_texturedstripe_corner_stairs": "Dark Gray Textured Stripe Corner Stairs",
-  "block.seconddawnblocks.darkgray_texturedstripe_vertical_slab": "Dark Gray Textured Stripe Vertical Slab"
+  "block.seconddawnblocks.darkgray_texturedstripe_vertical_slab": "Dark Gray Textured Stripe Vertical Slab",
+
+  "block.seconddawnblocks.darkgray_halfpanel_ventblock": "Dark Gray Half Panel Vent Block",
+  "block.seconddawnblocks.darkgray_halfpanel_ventblock_stairs": "Dark Gray Half Panel Vent Block Stairs",
+  "block.seconddawnblocks.darkgray_halfpanel_ventblock_slab": "Dark Gray Half Panel Vent Block Slab",
+  "block.seconddawnblocks.darkgray_halfpanel_ventblock_wall": "Dark Gray Half Panel Vent Block Wall",
+  "block.seconddawnblocks.darkgray_halfpanel_ventblock_trapdoor": "Dark Gray Half Panel Vent Block Trapdoor",
+  "block.seconddawnblocks.darkgray_halfpanel_ventblock_layer": "Dark Gray Half Panel Vent Block Layer",
+  "block.seconddawnblocks.darkgray_halfpanel_ventblock_corner_stairs": "Dark Gray Half Panel Vent Block Corner Stairs",
+  "block.seconddawnblocks.darkgray_halfpanel_ventblock_vertical_slab": "Dark Gray Half Panel Vent Block Vertical Slab",
+
+  "block.seconddawnblocks.darkgray_metalpanel": "Dark Gray Metal Panel",
+  "block.seconddawnblocks.darkgray_metalpanel_stairs": "Dark Gray Metal Panel Stairs",
+  "block.seconddawnblocks.darkgray_metalpanel_slab": "Dark Gray Metal Panel Slab",
+  "block.seconddawnblocks.darkgray_metalpanel_wall": "Dark Gray Metal Panel Wall",
+  "block.seconddawnblocks.darkgray_metalpanel_trapdoor": "Dark Gray Metal Panel Trapdoor",
+  "block.seconddawnblocks.darkgray_metalpanel_layer": "Dark Gray Metal Panel Layer",
+  "block.seconddawnblocks.darkgray_metalpanel_corner_stairs": "Dark Gray Metal Panel Corner Stairs",
+  "block.seconddawnblocks.darkgray_metalpanel_vertical_slab": "Dark Gray Metal Panel Vertical Slab",
+
+  "block.seconddawnblocks.trimetalpanel": "Tri Metal Panel",
+  "block.seconddawnblocks.trimetalpanel_stairs": "Tri Metal Panel Stairs",
+  "block.seconddawnblocks.trimetalpanel_slab": "Tri Metal Panel Slab",
+  "block.seconddawnblocks.trimetalpanel_wall": "Tri Metal Panel Wall",
+  "block.seconddawnblocks.trimetalpanel_trapdoor": "Tri Metal Panel Trapdoor",
+  "block.seconddawnblocks.trimetalpanel_layer": "Tri Metal Panel Layer",
+  "block.seconddawnblocks.trimetalpanel_corner_stairs": "Tri Metal Panel Corner Stairs",
+  "block.seconddawnblocks.trimetalpanel_vertical_slab": "Tri Metal Panel Vertical Slab",
+
+  "block.seconddawnblocks.polygratesurface": "Poly Grate Surface",
+  "block.seconddawnblocks.polygratesurface_stairs": "Poly Grate Surface Stairs",
+  "block.seconddawnblocks.polygratesurface_slab": "Poly Grate Surface Slab",
+  "block.seconddawnblocks.polygratesurface_wall": "Poly Grate Surface Wall",
+  "block.seconddawnblocks.polygratesurface_trapdoor": "Poly Grate Surface Trapdoor",
+  "block.seconddawnblocks.polygratesurface_layer": "Poly Grate Surface Layer",
+  "block.seconddawnblocks.polygratesurface_corner_stairs": "Poly Grate Surface Corner Stairs",
+  "block.seconddawnblocks.polygratesurface_vertical_slab": "Poly Grate Surface Vertical Slab"
 }
 

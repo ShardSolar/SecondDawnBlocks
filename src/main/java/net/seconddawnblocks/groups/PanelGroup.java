@@ -55,7 +55,11 @@ public class PanelGroup {
             "corridor1",
             "bluemetalplateblock",
             "darkgray_texturedpanel_block",
-            "darkgray_texturedstripe"
+            "darkgray_texturedstripe",
+            "darkgray_halfpanel_ventblock",
+            "darkgray_metalpanel",
+            "trimetalpanel",
+            "polygratesurface"
 
     };
 
