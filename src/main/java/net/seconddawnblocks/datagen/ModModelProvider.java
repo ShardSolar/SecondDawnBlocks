@@ -187,6 +187,8 @@ public class ModModelProvider extends FabricModelProvider {
             BlockStateModelGenerator.BlockTexturePool pool =
                     gen.registerCubeAllModelTexturePool(baseBlock);
 
+            gen.registerParentedItemModel(baseBlock, ModelIds.getBlockModelId(baseBlock));
+
             pool.stairs(stairsBlock);
             pool.slab(slabBlock);
             pool.wall(wallBlock);
