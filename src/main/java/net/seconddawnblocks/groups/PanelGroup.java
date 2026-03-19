@@ -37,6 +37,18 @@ public class PanelGroup {
 
     public static final String[] PANELS = {
             "surfacegray_orangelight",
+            "alt_oak_planks",
+            "surfacelightgray_redstripe",
+            "surfacegray_light",
+            "surfacewhite_bluelight",
+            "surfaceblack_redlight",
+            "surfacelightgray_bluelight",
+            "strippedgraypanel",
+            "grayborder_redpanel",
+            "techblock1",
+            "ventblock",
+            "grayfabric_lowblackline",
+            "blackblockpanel"
 
     };
 

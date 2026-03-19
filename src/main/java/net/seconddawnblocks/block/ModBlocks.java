@@ -115,7 +115,7 @@ public class ModBlocks {
             Registries.ITEM_GROUP,
             Identifier.of(SecondDawnBlocks.MOD_ID, "01seconddawn"), //name
             FabricItemGroup.builder()
-                    .displayName(Text.literal("Shipyard").formatted(Formatting.GOLD)) //Display in the Creative Menu
+                    .displayName(Text.literal("SecondDawn").formatted(Formatting.GOLD)) //Display in the Creative Menu
                     .icon(() -> new ItemStack(Items.OAK_BOAT))
                     .entries((context, entries) -> {
 
