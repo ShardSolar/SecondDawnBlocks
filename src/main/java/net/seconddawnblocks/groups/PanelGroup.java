@@ -48,7 +48,14 @@ public class PanelGroup {
             "techblock1",
             "ventblock",
             "grayfabric_lowblackline",
-            "blackblockpanel"
+            "blackblockpanel",
+            "lightgrayhalfpanels",
+            "cut_lightgrayhalfpanels",
+            "lightgrayfullpanel",
+            "corridor1",
+            "bluemetalplateblock",
+            "darkgray_texturedpanel_block",
+            "darkgray_texturedstripe"
 
     };
 
