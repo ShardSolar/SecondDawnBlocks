@@ -77,6 +77,6 @@
   ],
   "textures": {
     "particle": "#texture",
-    "texture": "shipyardsmod:block/test_tile"
+    "texture": "seconddawnblocks:block/test_tile"
   }
 }

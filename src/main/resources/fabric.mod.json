@@ -1,6 +1,6 @@
 {
 	"schemaVersion": 1,
-	"id": "seconddawnblocks",
+	"id": "seconddawnblocksblocks",
 	"version": "${version}",
 	"name": "Second Dawn Blocks",
 	"description": "This is a block Mod for Second Dawn RP made by Shard :)",
@@ -15,17 +15,17 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.seconddawn.SecondDawnBlocks"
+			"net.seconddawnblocks.SecondDawnBlocks"
 		],
 		"client": [
-			"net.seconddawn.SecondDawnClient"
+			"net.seconddawnblocks.SecondDawnClient"
 		],
 		"fabric-datagen": [
-			"net.seconddawn.SecondDawnDatagen"
+			"net.seconddawnblocks.SecondDawnDatagen"
 		]
 	},
 	"mixins": [
-		"tutorialmod.mixins.json"
+		"seconddawnblocks.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.14.21",

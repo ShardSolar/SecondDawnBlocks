@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "shipyardsmod:block/gray_fabric_wall"
+    "all": "seconddawnblocks:block/gray_fabric_wall"
   }
 }
