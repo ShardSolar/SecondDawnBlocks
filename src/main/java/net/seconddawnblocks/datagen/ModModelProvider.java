@@ -23,6 +23,7 @@ import net.seconddawnblocks.block.shelvesdir.ShelfBlock;
 import net.seconddawnblocks.block.shelvesdir.ShelfType;
 import net.seconddawnblocks.block.shelvesdir.ShelvesBlock;
 import net.seconddawnblocks.groups.Flat_ColoursGroup;
+import net.seconddawnblocks.groups.PanelGroup;
 
 import java.util.Map;
 import java.util.Optional;
@@ -144,8 +145,6 @@ public class ModModelProvider extends FabricModelProvider {
 
 
 
-
-
         // ------------- Block Datagen -------------
 
 
@@ -194,6 +193,30 @@ public class ModModelProvider extends FabricModelProvider {
             pool.wall(wallBlock);
             gen.registerTrapdoor(trapdoorBlock);
         }
+
+        for (int i = 0; i < PanelGroup.NUM_PANELS; i++) {
+            Block baseBlock = PanelGroup.BASE_BLOCKS.get(i);
+            Block stairsBlock = PanelGroup.STAIRS_BLOCKS.get(i);
+            Block slabBlock = PanelGroup.SLAB_BLOCKS.get(i);
+            Block wallBlock = PanelGroup.WALL_BLOCKS.get(i);
+            Block trapdoorBlock = PanelGroup.TRAPDOOR_BLOCKS.get(i);
+            Block verticalQuarterBlock = PanelGroup.VERTICAL_QUARTER_BLOCKS.get(i);
+            Block horizontalQuarterBlock = PanelGroup.HORIZONTAL_QUARTER_BLOCKS.get(i);
+
+            BlockStateModelGenerator.BlockTexturePool pool =
+                    gen.registerCubeAllModelTexturePool(baseBlock);
+
+            gen.registerParentedItemModel(baseBlock, ModelIds.getBlockModelId(baseBlock));
+
+            pool.stairs(stairsBlock);
+            pool.slab(slabBlock);
+            pool.wall(wallBlock);
+            gen.registerTrapdoor(trapdoorBlock);
+
+            registerVerticalQuarterBlock(gen, verticalQuarterBlock, TextureMap.getId(baseBlock));
+            registerHorizontalQuarterBlock(gen, horizontalQuarterBlock, TextureMap.getId(baseBlock));
+        }
+
     }
 
     @Override

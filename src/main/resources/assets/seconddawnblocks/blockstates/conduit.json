@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "axis=y": { "model": "seconddawnblocks:block/conduit" },
+    "axis=x": { "model": "seconddawnblocks:block/conduit", "x": 90, "y": 90 },
+    "axis=z": { "model": "seconddawnblocks:block/conduit", "x": 90 }
+  }
+}

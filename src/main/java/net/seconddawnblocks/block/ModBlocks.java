@@ -101,12 +101,19 @@ public class ModBlocks {
             new VerticalQuarterBlock(AbstractBlock.Settings.create().strength(2.0f).requiresTool().nonOpaque())
     );
 
+    public static final Block CONDUIT = registerBlock("conduit",
+            new PillarBlock(AbstractBlock.Settings.copy(Blocks.JUNGLE_LOG).nonOpaque())
+    );
+
+   /* public static final Block SurfaceGray_OrangeLight = registerBlock("surfacegray_orangelight",
+            new PillarBlock(AbstractBlock.Settings.copy(Blocks.JUNGLE_LOG).nonOpaque())
+    );*/
 
     // Below is all registry for Item Groups in the mod
     // Copy and paste within the Class to make a new group.
-    public static final ItemGroup SHIPYARD = Registry.register(
+    public static final ItemGroup SecondDawn = Registry.register(
             Registries.ITEM_GROUP,
-            Identifier.of(SecondDawnBlocks.MOD_ID, "01shipyard"), //name
+            Identifier.of(SecondDawnBlocks.MOD_ID, "01seconddawn"), //name
             FabricItemGroup.builder()
                     .displayName(Text.literal("Shipyard").formatted(Formatting.GOLD)) //Display in the Creative Menu
                     .icon(() -> new ItemStack(Items.OAK_BOAT))
@@ -143,6 +150,10 @@ public class ModBlocks {
                         entries.add(ShelvesBlock.MANGROVE_SHELF.asItem());
                         entries.add(ShelvesBlock.DARK_OAK_SHELF.asItem());
                         entries.add(ShelvesBlock.WARPED_SHELF.asItem());
+
+                        //OfficialBlocks
+                        entries.add(ModBlocks.CONDUIT.asItem());
+                        //entries.add(ModBlocks.SurfaceGray_OrangeLight.asItem());
 
 
                         for (int colourBlockIndex = 0; colourBlockIndex < Flat_ColoursGroup.COLOUR_BLOCKS.size(); colourBlockIndex++) {

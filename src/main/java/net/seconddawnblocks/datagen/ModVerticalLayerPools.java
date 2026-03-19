@@ -1,8 +1,11 @@
 package net.seconddawnblocks.datagen;
 
+import net.minecraft.block.Block;
+import net.minecraft.data.client.TextureMap;
 import net.seconddawnblocks.block.ModBlocks;
 import net.seconddawnblocks.block.verticalslabsdir.VerticalSlabPool;
 import net.seconddawnblocks.groups.Flat_ColoursGroup;
+import net.seconddawnblocks.groups.PanelGroup;
 
 public final class ModVerticalLayerPools {
     private ModVerticalLayerPools() {}
@@ -51,6 +54,30 @@ public final class ModVerticalLayerPools {
             VERTICAL_SLABS.layer(
                     Flat_ColoursGroup.VERTICAL_SLAB_BLOCKS.get(i),
                     Flat_ColoursGroup.COLOURS[i]
+            );
+        }
+
+        // ---- Generate every panel custom-shape block ----
+        for (int i = 0; i < PanelGroup.NUM_PANELS; i++) {
+            Block baseBlock = PanelGroup.BASE_BLOCKS.get(i);
+
+            String textureName = net.minecraft.registry.Registries.BLOCK
+                    .getId(baseBlock)
+                    .getPath();
+
+            BLOCK.layer(
+                    PanelGroup.LAYER_BLOCKS.get(i),
+                    textureName
+            );
+
+            CORNER_STAIRS.layer(
+                    PanelGroup.CORNER_STAIRS_BLOCKS.get(i),
+                    textureName
+            );
+
+            VERTICAL_SLABS.layer(
+                    PanelGroup.VERTICAL_SLAB_BLOCKS.get(i),
+                    textureName
             );
         }
 

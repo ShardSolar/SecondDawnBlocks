@@ -1661,5 +1661,12 @@
   "block.seconddawnblocks.yellow_8_vertical_slab": "Yellow 8 Vertical Slab",
 
 
-  "itemgroup.seconddawnblocks.TMP": "My Custom Tab"
+  "block.seconddawnblocks.surfacegray_orangelight": "Surface Gray Orange Light Block",
+  "block.seconddawnblocks.surfacegray_orangelight_stairs": "Surface Gray Orange Light Stairs",
+  "block.seconddawnblocks.surfacegray_orangelight_slab": "Surface Gray Orange Light Slab",
+  "block.seconddawnblocks.surfacegray_orangelight_wall": "Surface Gray Orange Light Wall",
+  "block.seconddawnblocks.surfacegray_orangelight_trapdoor": "Surface Gray Orange Light Trapdoor",
+  "block.seconddawnblocks.surfacegray_orangelight_layer": "Surface Gray Orange Light Layer",
+  "block.seconddawnblocks.surfacegray_orangelight_corner_stairs": "Surface Gray Orange Light Corner Stairs",
+  "block.seconddawnblocks.surfacegray_orangelight_vertical_slab": "Surface Gray Orange Light Vertical Slab"
 }
