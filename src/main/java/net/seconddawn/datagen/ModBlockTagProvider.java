@@ -4,7 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
-import net.seconddawn.SecondDawn;
+import net.seconddawn.SecondDawnBlocks;
 import net.seconddawn.block.ModBlocks;
 import net.seconddawn.block.shelvesdir.ShelvesBlockTag;
 import net.seconddawn.groups.Flat_ColoursGroup;
@@ -42,17 +42,17 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         // shelves:shelves (use IDs so ShelvesBlock class doesn't initialize during datagen)
         getOrCreateTagBuilder(ShelvesBlockTag.SHELVES)
-                .addOptional(SecondDawn.id("oak_shelf"))
-                .addOptional(SecondDawn.id("spruce_shelf"))
-                .addOptional(SecondDawn.id("birch_shelf"))
-                .addOptional(SecondDawn.id("jungle_shelf"))
-                .addOptional(SecondDawn.id("acacia_shelf"))
-                .addOptional(SecondDawn.id("cherry_shelf"))
-                .addOptional(SecondDawn.id("dark_oak_shelf"))
-                .addOptional(SecondDawn.id("mangrove_shelf"))
-                .addOptional(SecondDawn.id("bamboo_shelf"))
-                .addOptional(SecondDawn.id("crimson_shelf"))
-                .addOptional(SecondDawn.id("warped_shelf"));
+                .addOptional(SecondDawnBlocks.id("oak_shelf"))
+                .addOptional(SecondDawnBlocks.id("spruce_shelf"))
+                .addOptional(SecondDawnBlocks.id("birch_shelf"))
+                .addOptional(SecondDawnBlocks.id("jungle_shelf"))
+                .addOptional(SecondDawnBlocks.id("acacia_shelf"))
+                .addOptional(SecondDawnBlocks.id("cherry_shelf"))
+                .addOptional(SecondDawnBlocks.id("dark_oak_shelf"))
+                .addOptional(SecondDawnBlocks.id("mangrove_shelf"))
+                .addOptional(SecondDawnBlocks.id("bamboo_shelf"))
+                .addOptional(SecondDawnBlocks.id("crimson_shelf"))
+                .addOptional(SecondDawnBlocks.id("warped_shelf"));
 
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 .addTag(ShelvesBlockTag.SHELVES);

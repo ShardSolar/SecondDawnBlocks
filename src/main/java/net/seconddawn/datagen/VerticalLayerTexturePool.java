@@ -2,7 +2,7 @@ package net.seconddawn.datagen;
 
 import net.minecraft.block.Block;
 import net.minecraft.util.Identifier;
-import net.seconddawn.SecondDawn;
+import net.seconddawn.SecondDawnBlocks;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -16,7 +16,7 @@ public class VerticalLayerTexturePool {
     }
 
     public static VerticalLayerTexturePool of(String baseTexturePath) {
-        return new VerticalLayerTexturePool(Identifier.of(SecondDawn.MOD_ID, baseTexturePath));
+        return new VerticalLayerTexturePool(Identifier.of(SecondDawnBlocks.MOD_ID, baseTexturePath));
     }
 
     public VerticalLayerTexturePool layer(Block block) {

@@ -5,7 +5,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.seconddawn.SecondDawn;
+import net.seconddawn.SecondDawnBlocks;
 
 import static net.seconddawn.block.ModBlocks.VERTICAL_TEST_SLAB;
 import static net.seconddawn.block.ModBlocks.registerBlockItem;
@@ -23,7 +23,7 @@ public class RegisterVerticalSlabsItems implements ModInitializer {
     private static Item register(String path, Block block) {
         return Registry.register(
                 Registries.ITEM,
-                SecondDawn.id(path),
+                SecondDawnBlocks.id(path),
                 new BlockItem(block, new Item.Settings())
         );
 

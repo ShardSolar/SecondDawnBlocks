@@ -1,11 +1,11 @@
 package net.seconddawn.block.shelvesdir;
 
-import net.seconddawn.SecondDawn;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.seconddawn.SecondDawnBlocks;
 
 public class ShelvesItems {
 
@@ -24,7 +24,7 @@ public class ShelvesItems {
     private static Item register(String path, Block block) {
         return Registry.register(
                 Registries.ITEM,
-                ShipyardsMod.id(path),
+                SecondDawnBlocks.id(path),
                 new BlockItem(block, new Item.Settings())
         );
     }

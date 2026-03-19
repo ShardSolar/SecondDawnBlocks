@@ -2,15 +2,13 @@ package net.seconddawn;
 
 import net.fabricmc.api.ModInitializer;
 
-import net.seconddawn.block.ModBlocks;
-import net.seconddawn.block.shelvesdir.ShelvesBlock;
 import net.seconddawn.groups.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import net.minecraft.util.Identifier;
 
-public class SecondDawn implements ModInitializer {
-	public static final String MOD_ID = "seconddawn";
+public class SecondDawnBlocks implements ModInitializer {
+	public static final String MOD_ID = "seconddawnblocks";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	@Override

@@ -1,13 +1,11 @@
 {
 	"schemaVersion": 1,
-	"id": "shipyardsmod",
+	"id": "seconddawnblocks",
 	"version": "${version}",
-	"name": "Shipyards Mod",
-	"description": "This is a Shipyards Mod made by Shipyards :)",
+	"name": "Second Dawn Blocks",
+	"description": "This is a block Mod for Second Dawn RP made by Shard :)",
 	"authors": [
-		"Shard!",
-		"Lud!",
-		"Sisko"
+		"Shard!"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
@@ -17,13 +15,13 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.shipyardsmod.ShipyardsMod"
+			"net.seconddawn.SecondDawnBlocks"
 		],
 		"client": [
-			"net.shipyardsmod.SecondDawnClient"
+			"net.seconddawn.SecondDawnClient"
 		],
 		"fabric-datagen": [
-			"net.shipyardsmod.SecondDawnDatagen"
+			"net.seconddawn.SecondDawnDatagen"
 		]
 	},
 	"mixins": [

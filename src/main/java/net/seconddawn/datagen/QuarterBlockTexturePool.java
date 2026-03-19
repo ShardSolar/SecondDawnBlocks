@@ -3,7 +3,7 @@ package net.seconddawn.datagen;
 import net.minecraft.block.Block;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
-import net.seconddawn.SecondDawn;
+import net.seconddawn.SecondDawnBlocks;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -19,7 +19,7 @@ public class QuarterBlockTexturePool {
 
     public static QuarterBlockTexturePool of(String baseTexturePath) {
         return new QuarterBlockTexturePool(
-                Identifier.of(SecondDawn.MOD_ID, baseTexturePath)
+                Identifier.of(SecondDawnBlocks.MOD_ID, baseTexturePath)
         );
     }
 

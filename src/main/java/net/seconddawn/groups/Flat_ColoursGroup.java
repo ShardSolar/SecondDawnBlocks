@@ -22,7 +22,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
-import net.seconddawn.SecondDawn;
+import net.seconddawn.SecondDawnBlocks;
 import net.seconddawn.block.HorizontalQuarterBlock;
 import net.seconddawn.block.VerticalQuarterBlock;
 import net.seconddawn.block.VerticalLayersBlock;
@@ -280,19 +280,19 @@ public class Flat_ColoursGroup {
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
-        return Registry.register(Registries.BLOCK, Identifier.of(SecondDawn.MOD_ID, name), block);
+        return Registry.register(Registries.BLOCK, Identifier.of(SecondDawnBlocks.MOD_ID, name), block);
     }
 
     private static void registerBlockItem(String name, Block block) {
         Registry.register(
                 Registries.ITEM,
-                Identifier.of(SecondDawn.MOD_ID, name),
+                Identifier.of(SecondDawnBlocks.MOD_ID, name),
                 new BlockItem(block, new Item.Settings())
         );
     }
 
     public static void registerModBlocks() {
-        SecondDawn.LOGGER.info("Registering Flat Colours blocks for " + SecondDawn.MOD_ID);
+        SecondDawnBlocks.LOGGER.info("Registering Flat Colours blocks for " + SecondDawnBlocks.MOD_ID);
 
         for (int colorIndex = 0; colorIndex < NUM_COLOURS; colorIndex++) {
             String colourName = COLOURS[colorIndex];
@@ -418,7 +418,7 @@ public class Flat_ColoursGroup {
 
         FLAT_COLOURS = Registry.register(
                 Registries.ITEM_GROUP,
-                Identifier.of(SecondDawn.MOD_ID, "07flatcolours"),
+                Identifier.of(SecondDawnBlocks.MOD_ID, "07flatcolours"),
                 FabricItemGroup.builder()
                         .displayName(Text.literal("Flat Colours").formatted(Formatting.GOLD))
                         .icon(() -> new ItemStack(Blocks.BLUE_WOOL))
@@ -440,7 +440,7 @@ public class Flat_ColoursGroup {
     public static ItemGroup registerItemGroup(String name) {
         return Registry.register(
                 Registries.ITEM_GROUP,
-                Identifier.of(SecondDawn.MOD_ID, name),
+                Identifier.of(SecondDawnBlocks.MOD_ID, name),
                 FabricItemGroup.builder()
                         .displayName(Text.literal(capitalize(name)).formatted(Formatting.GOLD))
                         .icon(() -> new ItemStack(Items.OAK_BOAT))

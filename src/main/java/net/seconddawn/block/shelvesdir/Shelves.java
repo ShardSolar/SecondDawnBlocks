@@ -6,7 +6,7 @@ import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
-import net.seconddawn.SecondDawn;
+import net.seconddawn.SecondDawnBlocks;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,11 +14,11 @@ public final class Shelves {
 
     private Shelves() {}
 
-    public static final Logger LOGGER = LoggerFactory.getLogger(ShipyardsMod.MOD_ID);
+    public static final Logger LOGGER = LoggerFactory.getLogger(SecondDawnBlocks.MOD_ID);
 
     // IMPORTANT: use your main modid so everything is assets/shipyardsmod and data/shipyardsmod
     public static Identifier id(String path) {
-        return ShipyardsMod.id(path);
+        return SecondDawnBlocks.id(path);
     }
 
     /** Call this from ShipyardsMod.onInitialize() */

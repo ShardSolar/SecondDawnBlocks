@@ -1,13 +1,12 @@
 package net.seconddawn.block;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.*;
 import net.minecraft.item.*;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.seconddawn.block.cornerstairs.CornerStairs;
-import net.seconddawn.SecondDawn;
+import net.seconddawn.SecondDawnBlocks;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
@@ -26,10 +25,10 @@ public class ModBlocks {
 
 // Stairs
 
-    public static final Block TEST_STAIRS = registerBlock("test_stairs",
-            new StairsBlock(TNGGroup.GRAY_FABRIC_WALL.getDefaultState(),
+    /*public static final Block TEST_STAIRS = registerBlock("test_stairs",
+            new StairsBlock(Flat_ColoursGroup.BASE_BLOCKS.getDefaultState(),
                     AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.WOOL)));
-
+*/
     // Slabs
 
     public static final Block TEST_SLAB = registerBlock("test_slab",
@@ -107,7 +106,7 @@ public class ModBlocks {
     // Copy and paste within the Class to make a new group.
     public static final ItemGroup SHIPYARD = Registry.register(
             Registries.ITEM_GROUP,
-            Identifier.of(SecondDawn.MOD_ID, "01shipyard"), //name
+            Identifier.of(SecondDawnBlocks.MOD_ID, "01shipyard"), //name
             FabricItemGroup.builder()
                     .displayName(Text.literal("Shipyard").formatted(Formatting.GOLD)) //Display in the Creative Menu
                     .icon(() -> new ItemStack(Items.OAK_BOAT))
@@ -121,7 +120,7 @@ public class ModBlocks {
                         entries.add(ModBlocks.VERTICAL_TEST_SLAB.asItem());
                         entries.add(ModBlocks.TEST_CORNER_STAIRS.asItem());
                         entries.add(ModBlocks.TEST_TILE.asItem());
-                        entries.add(ModBlocks.TEST_STAIRS.asItem());
+                        //entries.add(ModBlocks.TEST_STAIRS.asItem());
                         entries.add(ModBlocks.TEST_SLAB.asItem());
                         entries.add(ModBlocks.TEST_DOOR.asItem());
                         entries.add(ModBlocks.TEST_BUTTON.asItem());
@@ -160,16 +159,16 @@ public class ModBlocks {
     //This is base block register format -Note by Shard
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
-        return Registry.register(Registries.BLOCK, Identifier.of(SecondDawn.MOD_ID, name), block);
+        return Registry.register(Registries.BLOCK, Identifier.of(SecondDawnBlocks.MOD_ID, name), block);
     }
 
     public static void registerBlockItem(String name, Block block) {
-             Registry.register(Registries.ITEM, Identifier.of(SecondDawn.MOD_ID, name),
+             Registry.register(Registries.ITEM, Identifier.of(SecondDawnBlocks.MOD_ID, name),
                 new BlockItem(block, new Item.Settings()));
     }
 
     public static void registerModBlocks() {
-        SecondDawn.LOGGER.info("Registering ModBlocks for " + SecondDawn.MOD_ID);
+        SecondDawnBlocks.LOGGER.info("Registering ModBlocks for " + SecondDawnBlocks.MOD_ID);
 
 
 
@@ -181,7 +180,7 @@ public class ModBlocks {
     public static ItemGroup registerItemGroup(String name) {
         return Registry.register(
                 Registries.ITEM_GROUP,
-                Identifier.of(SecondDawn.MOD_ID, name),
+                Identifier.of(SecondDawnBlocks.MOD_ID, name),
                 FabricItemGroup.builder()
                         .displayName(Text.literal(capitalize(name).formatted(Formatting.GOLD)))
                         .icon(() -> new ItemStack(Items.OAK_BOAT))

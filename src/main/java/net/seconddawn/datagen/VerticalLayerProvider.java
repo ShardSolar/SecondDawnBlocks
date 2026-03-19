@@ -8,7 +8,7 @@ import net.minecraft.data.DataProvider;
 import net.minecraft.data.DataWriter;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
-import net.seconddawn.SecondDawn;
+import net.seconddawn.SecondDawnBlocks;
 import net.seconddawn.block.VerticalLayersBlock;
 import net.seconddawn.block.verticalslabsdir.VerticalSlabPool;
 
@@ -75,7 +75,7 @@ public class VerticalLayerProvider implements DataProvider {
             JsonObject modelJson = makeUpFacingLayerModel(textureId, t);
 
             Path modelPath = root.resolve("assets")
-                    .resolve(SecondDawn.MOD_ID)
+                    .resolve(SecondDawnBlocks.MOD_ID)
                     .resolve("models")
                     .resolve("block")
                     .resolve(modelName + ".json");
@@ -88,7 +88,7 @@ public class VerticalLayerProvider implements DataProvider {
 
         for (int layers = 1; layers <= VerticalLayersBlock.MAX_LAYERS; layers++) {
             int t = layers * 2;
-            String modelId = SecondDawn.MOD_ID + ":block/" + name + "_height" + t;
+            String modelId = SecondDawnBlocks.MOD_ID + ":block/" + name + "_height" + t;
 
             variants.add("facing=up,layers=" + layers, variantJson(modelId, null, null));
             variants.add("facing=down,layers=" + layers, variantJson(modelId, 180, null));
@@ -101,17 +101,17 @@ public class VerticalLayerProvider implements DataProvider {
         blockstate.add("variants", variants);
 
         Path blockstatePath = root.resolve("assets")
-                .resolve(SecondDawn.MOD_ID)
+                .resolve(SecondDawnBlocks.MOD_ID)
                 .resolve("blockstates")
                 .resolve(name + ".json");
 
         futures.add(DataProvider.writeToPath(writer, blockstate, blockstatePath));
 
         JsonObject itemModel = new JsonObject();
-        itemModel.addProperty("parent", SecondDawn.MOD_ID + ":block/" + name + "_height2");
+        itemModel.addProperty("parent", SecondDawnBlocks.MOD_ID + ":block/" + name + "_height2");
 
         Path itemPath = root.resolve("assets")
-                .resolve(SecondDawn.MOD_ID)
+                .resolve(SecondDawnBlocks.MOD_ID)
                 .resolve("models")
                 .resolve("item")
                 .resolve(name + ".json");
@@ -140,12 +140,12 @@ public class VerticalLayerProvider implements DataProvider {
         String textureId = normalizeTextureId(texture);
         Path root = output.getPath();
 
-        String blockModelId = SecondDawn.MOD_ID + ":block/" + name;
+        String blockModelId = SecondDawnBlocks.MOD_ID + ":block/" + name;
 
         JsonObject modelJson = makeCornerStairsModel(textureId);
 
         Path modelPath = root.resolve("assets")
-                .resolve(SecondDawn.MOD_ID)
+                .resolve(SecondDawnBlocks.MOD_ID)
                 .resolve("models")
                 .resolve("block")
                 .resolve(name + ".json");
@@ -163,7 +163,7 @@ public class VerticalLayerProvider implements DataProvider {
         blockstate.add("variants", variants);
 
         Path blockstatePath = root.resolve("assets")
-                .resolve(SecondDawn.MOD_ID)
+                .resolve(SecondDawnBlocks.MOD_ID)
                 .resolve("blockstates")
                 .resolve(name + ".json");
 
@@ -173,7 +173,7 @@ public class VerticalLayerProvider implements DataProvider {
         itemModel.addProperty("parent", blockModelId);
 
         Path itemPath = root.resolve("assets")
-                .resolve(SecondDawn.MOD_ID)
+                .resolve(SecondDawnBlocks.MOD_ID)
                 .resolve("models")
                 .resolve("item")
                 .resolve(name + ".json");
@@ -202,20 +202,20 @@ public class VerticalLayerProvider implements DataProvider {
         String textureId = normalizeTextureId(texture);
         Path root = output.getPath();
 
-        String halfModelId = SecondDawn.MOD_ID + ":block/" + name;
-        String doubleModelId = SecondDawn.MOD_ID + ":block/" + name + "_double";
+        String halfModelId = SecondDawnBlocks.MOD_ID + ":block/" + name;
+        String doubleModelId = SecondDawnBlocks.MOD_ID + ":block/" + name + "_double";
 
         JsonObject halfModel = makeVerticalSlabHalfModel(textureId);
         JsonObject doubleModel = makeFullCubeModel(textureId);
 
         Path halfModelPath = root.resolve("assets")
-                .resolve(SecondDawn.MOD_ID)
+                .resolve(SecondDawnBlocks.MOD_ID)
                 .resolve("models")
                 .resolve("block")
                 .resolve(name + ".json");
 
         Path doubleModelPath = root.resolve("assets")
-                .resolve(SecondDawn.MOD_ID)
+                .resolve(SecondDawnBlocks.MOD_ID)
                 .resolve("models")
                 .resolve("block")
                 .resolve(name + "_double.json");
@@ -251,7 +251,7 @@ public class VerticalLayerProvider implements DataProvider {
         blockstate.add("variants", variants);
 
         Path blockstatePath = root.resolve("assets")
-                .resolve(SecondDawn.MOD_ID)
+                .resolve(SecondDawnBlocks.MOD_ID)
                 .resolve("blockstates")
                 .resolve(name + ".json");
 
@@ -261,7 +261,7 @@ public class VerticalLayerProvider implements DataProvider {
         itemModel.addProperty("parent", halfModelId);
 
         Path itemPath = root.resolve("assets")
-                .resolve(SecondDawn.MOD_ID)
+                .resolve(SecondDawnBlocks.MOD_ID)
                 .resolve("models")
                 .resolve("item")
                 .resolve(name + ".json");

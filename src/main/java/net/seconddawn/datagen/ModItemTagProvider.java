@@ -4,7 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
-import net.seconddawn.SecondDawn;
+import net.seconddawn.SecondDawnBlocks;
 import net.seconddawn.block.shelvesdir.ShelvesBlockTag;
 import net.seconddawn.block.shelvesdir.ShelvesItemTag;
 
@@ -25,7 +25,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
         copy(ShelvesBlockTag.SHELVES, ShelvesItemTag.SHELVES);
 
         getOrCreateTagBuilder(ItemTags.NON_FLAMMABLE_WOOD)
-                .addOptional(ShipyardsMod.id("crimson_shelf"))
-                .addOptional(ShipyardsMod.id("warped_shelf"));
+                .addOptional(SecondDawnBlocks.id("crimson_shelf"))
+                .addOptional(SecondDawnBlocks.id("warped_shelf"));
     }
 }
