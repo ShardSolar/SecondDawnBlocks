@@ -120,7 +120,7 @@ public class ModModelProvider extends FabricModelProvider {
         // ------------- Test blocks and texture pool -------------
 
         /*BlockStateModelGenerator.BlockTexturePool grayfabricpool =
-                gen.registerCubeAllModelTexturePool(TNGGroup.GRAY_FABRIC_WALL);
+                gen.registerCubeAllModelTexturePool(ModBlocks.CONDUIT);
 
 
 
@@ -132,8 +132,8 @@ public class ModModelProvider extends FabricModelProvider {
         grayfabricpool.fenceGate(ModBlocks.TEST_FENCE_GATE);
         grayfabricpool.wall(ModBlocks.TEST_WALL);
         gen.registerDoor(ModBlocks.TEST_DOOR);
-        gen.registerTrapdoor(ModBlocks.TEST_TRAPDOOR);
-*/
+        gen.registerTrapdoor(ModBlocks.TEST_TRAPDOOR);*/
+
         //-----------------------------------------------------------------
 
         // ------------- Texture Pools -------------

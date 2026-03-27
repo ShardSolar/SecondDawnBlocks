@@ -31,7 +31,7 @@ public class ModBlocks {
 */
     // Slabs
 
-    public static final Block TEST_SLAB = registerBlock("test_slab",
+    /*public static final Block TEST_SLAB = registerBlock("test_slab",
             new SlabBlock(AbstractBlock.Settings.create().strength(2f).requiresTool().sounds(BlockSoundGroup.WOOL)));
 
     // Walls
@@ -79,7 +79,7 @@ public class ModBlocks {
 
     public static final Block TEST_CORRIDOR_LAYER2 = registerBlock("test_corridor_layer2",
             new VerticalLayersBlock(AbstractBlock.Settings.create().strength(2f).requiresTool().sounds(BlockSoundGroup.WOOL)));
-
+*/
 
     // Vertical Slabs
 
@@ -123,7 +123,7 @@ public class ModBlocks {
 
                         //TEST
 
-                        entries.add(ModBlocks.TEST_CORRIDOR_LAYER.asItem());
+                        /*entries.add(ModBlocks.TEST_CORRIDOR_LAYER.asItem());
                         entries.add(ModBlocks.VERTICAL_TEST_SLAB.asItem());
                         entries.add(ModBlocks.TEST_CORNER_STAIRS.asItem());
                         entries.add(ModBlocks.TEST_TILE.asItem());
@@ -135,7 +135,7 @@ public class ModBlocks {
                         entries.add(ModBlocks.TEST_PRESSURE_PLATE.asItem());
                         entries.add(ModBlocks.TEST_FENCE.asItem());
                         entries.add(ModBlocks.TEST_FENCE_GATE.asItem());
-                        entries.add(ModBlocks.TEST_WALL.asItem());
+                        entries.add(ModBlocks.TEST_WALL.asItem());*/
 
                         //SHELF.
 

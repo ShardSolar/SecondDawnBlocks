@@ -24,8 +24,8 @@ public final class ModVerticalLayerPools {
     public static void register() {
 
         // ---- Manual / test vertical layer blocks ----
-        BLOCK.layer(ModBlocks.TEST_CORRIDOR_LAYER);
-        BLOCK.layer(ModBlocks.TEST_CORRIDOR_LAYER2, "gal_corridor_btm");
+       /* BLOCK.layer(ModBlocks.TEST_CORRIDOR_LAYER);
+        BLOCK.layer(ModBlocks.TEST_CORRIDOR_LAYER2, "gal_corridor_btm");*/
 
         // ---- Generate every flat-colour layer block ----
         for (int i = 0; i < Flat_ColoursGroup.NUM_COLOURS; i++) {
