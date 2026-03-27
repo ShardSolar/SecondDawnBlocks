@@ -3,12 +3,7 @@ package net.seconddawnblocks;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.seconddawnblocks.datagen.ModBlockTagProvider;
-import net.seconddawnblocks.datagen.ModItemTagProvider;
-import net.seconddawnblocks.datagen.ModModelProvider;
-import net.seconddawnblocks.datagen.ShelvesLootProvider;
-import net.seconddawnblocks.datagen.ShelvesRecipeProvider;
-import net.seconddawnblocks.datagen.VerticalLayerProvider;
+import net.seconddawnblocks.datagen.*;
 
 public class SecondDawnDatagen implements DataGeneratorEntrypoint {
 
@@ -21,6 +16,7 @@ public class SecondDawnDatagen implements DataGeneratorEntrypoint {
 
 		// Model provider(s)
 		pack.addProvider(ModModelProvider::new);
+		pack.addProvider(ModEnglishLangProvider::new);
 
 		// Your vertical layers provider (the one that uses CachedOutput/DataProvider.writeToPath)
 		pack.addProvider(VerticalLayerProvider::new);
