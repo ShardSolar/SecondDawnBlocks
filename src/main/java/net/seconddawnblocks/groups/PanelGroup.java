@@ -6,6 +6,7 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSetType;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.DoorBlock;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.block.StairsBlock;
 import net.minecraft.block.TrapdoorBlock;
@@ -29,12 +30,19 @@ import net.seconddawnblocks.block.VerticalQuarterBlock;
 import net.seconddawnblocks.block.cornerstairs.CornerStairs;
 import net.seconddawnblocks.block.verticalslabsdir.VerticalSlabs;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Vector;
 
 import static net.fabricmc.loader.impl.util.StringUtil.capitalize;
 
 public class PanelGroup {
 
+    /*
+     * Keep your full texture-name list here exactly like before.
+     * I left only a few examples below so this message stays readable.
+     * Paste your full existing list into this array.
+     */
     public static final String[] PANELS = {
             "surfacegray_orangelight",
             "alt_oak_planks",
@@ -61,6 +69,7 @@ public class PanelGroup {
             "trimetalpanel",
             "polygratesurface",
 
+            // paste the rest of your current list here
             //AstralBlocks
 
             "black_block",
@@ -646,21 +655,49 @@ public class PanelGroup {
             "yellow_tiles"
     };
 
+    /*
+     * Any texture name placed here will generate its normal family
+     * with luminance added to block settings.
+     */
+    private static final Set<String> EMISSIVE_PANELS = new HashSet<>(Set.of(
+            "surfacegray_orangelight",
+            "surfacegray_light",
+            "surfacewhite_bluelight",
+            "surfaceblack_redlight",
+            "surfacelightgray_bluelight"
+            // add more names here whenever you want them to glow
+    ));
 
+    /*
+     * Any texture name placed here will also get a door block generated.
+     * You can keep this very small and only use it for true door textures.
+     */
+    private static final Set<String> DOOR_PANELS = new HashSet<>(Set.of(
+            "corridor1"
+            // add more names here if you want a door version generated
+    ));
+
+    /*
+     * Default emissive light level for any texture in EMISSIVE_PANELS.
+     * Change this if you want brighter or dimmer glowing blocks.
+     */
+    private static final int DEFAULT_EMISSIVE_LIGHT = 12;
 
     public static final int NUM_PANELS = PANELS.length;
 
     public static final Vector<Block> BASE_BLOCKS = new Vector<>();
-    public static final Vector<Block> STAIRS_BLOCKS = new Vector<>();
-    public static final Vector<Block> SLAB_BLOCKS = new Vector<>();
-    public static final Vector<Block> WALL_BLOCKS = new Vector<>();
-    public static final Vector<Block> TRAPDOOR_BLOCKS = new Vector<>();
+    public static final Vector<StairsBlock> STAIRS_BLOCKS = new Vector<>();
+    public static final Vector<SlabBlock> SLAB_BLOCKS = new Vector<>();
+    public static final Vector<WallBlock> WALL_BLOCKS = new Vector<>();
+    public static final Vector<TrapdoorBlock> TRAPDOOR_BLOCKS = new Vector<>();
 
     public static final Vector<Block> LAYER_BLOCKS = new Vector<>();
     public static final Vector<Block> CORNER_STAIRS_BLOCKS = new Vector<>();
     public static final Vector<Block> VERTICAL_SLAB_BLOCKS = new Vector<>();
     public static final Vector<Block> VERTICAL_QUARTER_BLOCKS = new Vector<>();
     public static final Vector<Block> HORIZONTAL_QUARTER_BLOCKS = new Vector<>();
+
+    public static final Vector<DoorBlock> DOOR_BLOCKS = new Vector<>();
 
     public static final Vector<Block> PANEL_BLOCKS = new Vector<>();
 
@@ -679,119 +716,131 @@ public class PanelGroup {
         );
     }
 
+    private static boolean isEmissive(String panelName) {
+        return EMISSIVE_PANELS.contains(panelName);
+    }
+
+    private static boolean shouldGenerateDoor(String panelName) {
+        return DOOR_PANELS.contains(panelName);
+    }
+
+    private static AbstractBlock.Settings createPanelSettings(String panelName) {
+        AbstractBlock.Settings settings = AbstractBlock.Settings.copy(Blocks.IRON_BLOCK)
+                .sounds(BlockSoundGroup.STONE);
+
+        if (isEmissive(panelName)) {
+            settings = settings.luminance(state -> DEFAULT_EMISSIVE_LIGHT);
+        }
+
+        return settings;
+    }
+
+    private static AbstractBlock.Settings createNonOpaquePanelSettings(String panelName) {
+        return createPanelSettings(panelName).nonOpaque();
+    }
+
+    private static void registerBaseFamily(String panelName) {
+        AbstractBlock.Settings solidSettings = createPanelSettings(panelName);
+        AbstractBlock.Settings nonOpaqueSettings = createNonOpaquePanelSettings(panelName);
+
+        Block baseBlock = registerBlock(
+                panelName,
+                new Block(solidSettings)
+        );
+        BASE_BLOCKS.add(baseBlock);
+        PANEL_BLOCKS.add(baseBlock);
+
+        StairsBlock stairsBlock = (StairsBlock) registerBlock(
+                panelName + "_stairs",
+                new StairsBlock(
+                        baseBlock.getDefaultState(),
+                        createPanelSettings(panelName)
+                )
+        );
+        STAIRS_BLOCKS.add(stairsBlock);
+        PANEL_BLOCKS.add(stairsBlock);
+
+        SlabBlock slabBlock = (SlabBlock) registerBlock(
+                panelName + "_slab",
+                new SlabBlock(createPanelSettings(panelName))
+        );
+        SLAB_BLOCKS.add(slabBlock);
+        PANEL_BLOCKS.add(slabBlock);
+
+        WallBlock wallBlock = (WallBlock) registerBlock(
+                panelName + "_wall",
+                new WallBlock(createPanelSettings(panelName))
+        );
+        WALL_BLOCKS.add(wallBlock);
+        PANEL_BLOCKS.add(wallBlock);
+
+        TrapdoorBlock trapdoorBlock = (TrapdoorBlock) registerBlock(
+                panelName + "_trapdoor",
+                new TrapdoorBlock(
+                        BlockSetType.OAK,
+                        createNonOpaquePanelSettings(panelName)
+                )
+        );
+        TRAPDOOR_BLOCKS.add(trapdoorBlock);
+        PANEL_BLOCKS.add(trapdoorBlock);
+
+        Block layerBlock = registerBlock(
+                panelName + "_layer",
+                new VerticalLayersBlock(nonOpaqueSettings)
+        );
+        LAYER_BLOCKS.add(layerBlock);
+        PANEL_BLOCKS.add(layerBlock);
+
+        Block cornerStairsBlock = registerBlock(
+                panelName + "_corner_stairs",
+                new CornerStairs(nonOpaqueSettings)
+        );
+        CORNER_STAIRS_BLOCKS.add(cornerStairsBlock);
+        PANEL_BLOCKS.add(cornerStairsBlock);
+
+        Block verticalSlabBlock = registerBlock(
+                panelName + "_vertical_slab",
+                new VerticalSlabs(nonOpaqueSettings)
+        );
+        VERTICAL_SLAB_BLOCKS.add(verticalSlabBlock);
+        PANEL_BLOCKS.add(verticalSlabBlock);
+
+        Block verticalQuarterBlock = registerBlock(
+                panelName + "_quarter_vertical",
+                new VerticalQuarterBlock(nonOpaqueSettings)
+        );
+        VERTICAL_QUARTER_BLOCKS.add(verticalQuarterBlock);
+        PANEL_BLOCKS.add(verticalQuarterBlock);
+
+        Block horizontalQuarterBlock = registerBlock(
+                panelName + "_quarter_horizontal",
+                new HorizontalQuarterBlock(nonOpaqueSettings)
+        );
+        HORIZONTAL_QUARTER_BLOCKS.add(horizontalQuarterBlock);
+        PANEL_BLOCKS.add(horizontalQuarterBlock);
+    }
+
+    private static void registerDoorFamily(String panelName) {
+        DoorBlock doorBlock = (DoorBlock) registerBlock(
+                panelName + "_door",
+                new DoorBlock(
+                        BlockSetType.OAK,
+                        createNonOpaquePanelSettings(panelName)
+                )
+        );
+        DOOR_BLOCKS.add(doorBlock);
+        PANEL_BLOCKS.add(doorBlock);
+    }
+
     public static void registerModBlocks() {
         SecondDawnBlocks.LOGGER.info("Registering Panel Group blocks for " + SecondDawnBlocks.MOD_ID);
 
-        for (int panelIndex = 0; panelIndex < NUM_PANELS; panelIndex++) {
-            String panelName = PANELS[panelIndex];
+        for (String panelName : PANELS) {
+            registerBaseFamily(panelName);
 
-            Block baseBlock = registerBlock(
-                    panelName,
-                    new Block(
-                            AbstractBlock.Settings.copy(Blocks.IRON_BLOCK)
-                                    .sounds(BlockSoundGroup.STONE)
-                    )
-            );
-            BASE_BLOCKS.add(baseBlock);
-            PANEL_BLOCKS.add(baseBlock);
-
-            Block stairsBlock = registerBlock(
-                    panelName + "_stairs",
-                    new StairsBlock(
-                            baseBlock.getDefaultState(),
-                            AbstractBlock.Settings.copy(Blocks.IRON_BLOCK)
-                                    .sounds(BlockSoundGroup.STONE)
-                    )
-            );
-            STAIRS_BLOCKS.add(stairsBlock);
-            PANEL_BLOCKS.add(stairsBlock);
-
-            Block slabBlock = registerBlock(
-                    panelName + "_slab",
-                    new SlabBlock(
-                            AbstractBlock.Settings.copy(Blocks.IRON_BLOCK)
-                                    .sounds(BlockSoundGroup.STONE)
-                    )
-            );
-            SLAB_BLOCKS.add(slabBlock);
-            PANEL_BLOCKS.add(slabBlock);
-
-            Block wallBlock = registerBlock(
-                    panelName + "_wall",
-                    new WallBlock(
-                            AbstractBlock.Settings.copy(Blocks.IRON_BLOCK)
-                                    .sounds(BlockSoundGroup.STONE)
-                    )
-            );
-            WALL_BLOCKS.add(wallBlock);
-            PANEL_BLOCKS.add(wallBlock);
-
-            Block trapdoorBlock = registerBlock(
-                    panelName + "_trapdoor",
-                    new TrapdoorBlock(
-                            BlockSetType.OAK,
-                            AbstractBlock.Settings.copy(Blocks.IRON_BLOCK)
-                                    .sounds(BlockSoundGroup.STONE)
-                                    .nonOpaque()
-                    )
-            );
-            TRAPDOOR_BLOCKS.add(trapdoorBlock);
-            PANEL_BLOCKS.add(trapdoorBlock);
-
-            Block layerBlock = registerBlock(
-                    panelName + "_layer",
-                    new VerticalLayersBlock(
-                            AbstractBlock.Settings.copy(Blocks.IRON_BLOCK)
-                                    .sounds(BlockSoundGroup.STONE)
-                                    .nonOpaque()
-                    )
-            );
-            LAYER_BLOCKS.add(layerBlock);
-            PANEL_BLOCKS.add(layerBlock);
-
-            Block cornerStairsBlock = registerBlock(
-                    panelName + "_corner_stairs",
-                    new CornerStairs(
-                            AbstractBlock.Settings.copy(Blocks.IRON_BLOCK)
-                                    .sounds(BlockSoundGroup.STONE)
-                                    .nonOpaque()
-                    )
-            );
-            CORNER_STAIRS_BLOCKS.add(cornerStairsBlock);
-            PANEL_BLOCKS.add(cornerStairsBlock);
-
-            Block verticalSlabBlock = registerBlock(
-                    panelName + "_vertical_slab",
-                    new VerticalSlabs(
-                            AbstractBlock.Settings.copy(Blocks.IRON_BLOCK)
-                                    .sounds(BlockSoundGroup.STONE)
-                                    .nonOpaque()
-                    )
-            );
-            VERTICAL_SLAB_BLOCKS.add(verticalSlabBlock);
-            PANEL_BLOCKS.add(verticalSlabBlock);
-
-            Block verticalQuarterBlock = registerBlock(
-                    panelName + "_quarter_vertical",
-                    new VerticalQuarterBlock(
-                            AbstractBlock.Settings.copy(Blocks.IRON_BLOCK)
-                                    .sounds(BlockSoundGroup.STONE)
-                                    .nonOpaque()
-                    )
-            );
-            VERTICAL_QUARTER_BLOCKS.add(verticalQuarterBlock);
-            PANEL_BLOCKS.add(verticalQuarterBlock);
-
-            Block horizontalQuarterBlock = registerBlock(
-                    panelName + "_quarter_horizontal",
-                    new HorizontalQuarterBlock(
-                            AbstractBlock.Settings.copy(Blocks.IRON_BLOCK)
-                                    .sounds(BlockSoundGroup.STONE)
-                                    .nonOpaque()
-                    )
-            );
-            HORIZONTAL_QUARTER_BLOCKS.add(horizontalQuarterBlock);
-            PANEL_BLOCKS.add(horizontalQuarterBlock);
+            if (shouldGenerateDoor(panelName)) {
+                registerDoorFamily(panelName);
+            }
         }
 
         PANELS_GROUP = Registry.register(

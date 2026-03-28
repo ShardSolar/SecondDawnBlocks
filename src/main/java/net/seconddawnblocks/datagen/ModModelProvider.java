@@ -3,6 +3,7 @@ package net.seconddawnblocks.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Block;
+import net.minecraft.block.DoorBlock;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.BlockStateVariant;
 import net.minecraft.data.client.BlockStateVariantMap;
@@ -113,55 +114,7 @@ public class ModModelProvider extends FabricModelProvider {
         }
         registerQuarterPool(gen, quarterPool);
 
-        //gen.registerSimpleCubeAll(TNGGroup.GAL_WALL_BEIGE);
-
-
-
-        // ------------- Test blocks and texture pool -------------
-
-        /*BlockStateModelGenerator.BlockTexturePool grayfabricpool =
-                gen.registerCubeAllModelTexturePool(ModBlocks.CONDUIT);
-
-
-
-        //grayfabricpool.stairs(ModBlocks.TEST_STAIRS);
-        grayfabricpool.slab(ModBlocks.TEST_SLAB);
-        grayfabricpool.pressurePlate(ModBlocks.TEST_PRESSURE_PLATE);
-        grayfabricpool.button(ModBlocks.TEST_BUTTON);
-        grayfabricpool.fence(ModBlocks.TEST_FENCE);
-        grayfabricpool.fenceGate(ModBlocks.TEST_FENCE_GATE);
-        grayfabricpool.wall(ModBlocks.TEST_WALL);
-        gen.registerDoor(ModBlocks.TEST_DOOR);
-        gen.registerTrapdoor(ModBlocks.TEST_TRAPDOOR);*/
-
-        //-----------------------------------------------------------------
-
-        // ------------- Texture Pools -------------
-
-
-
-
-
-
-
-
-        // ------------- Block Datagen -------------
-
-
-
-        //gen.registerSimpleCubeAll(TNGGroup.GAL_CORRIDOR_BTM_ALT);
-
-
-        //gen.registerDoor(TNGGroup.TENFORWARD_DOOR);
-
-
-
-
-
-
-
-        //Shelves
-
+        // Shelves
         createShelf(gen, ShelvesBlock.OAK_SHELF);
         createShelf(gen, ShelvesBlock.SPRUCE_SHELF);
         createShelf(gen, ShelvesBlock.BIRCH_SHELF);
@@ -174,8 +127,7 @@ public class ModModelProvider extends FabricModelProvider {
         createShelf(gen, ShelvesBlock.CRIMSON_SHELF);
         createShelf(gen, ShelvesBlock.WARPED_SHELF);
 
-        //Flat Colour Generation loop
-
+        // Flat colours
         for (int i = 0; i < Flat_ColoursGroup.NUM_COLOURS; i++) {
             Block baseBlock = Flat_ColoursGroup.BASE_BLOCKS.get(i);
             Block stairsBlock = Flat_ColoursGroup.STAIRS_BLOCKS.get(i);
@@ -194,6 +146,7 @@ public class ModModelProvider extends FabricModelProvider {
             gen.registerTrapdoor(trapdoorBlock);
         }
 
+        // Panels
         for (int i = 0; i < PanelGroup.NUM_PANELS; i++) {
             Block baseBlock = PanelGroup.BASE_BLOCKS.get(i);
             Block stairsBlock = PanelGroup.STAIRS_BLOCKS.get(i);
@@ -217,11 +170,14 @@ public class ModModelProvider extends FabricModelProvider {
             registerHorizontalQuarterBlock(gen, horizontalQuarterBlock, TextureMap.getId(baseBlock));
         }
 
+        // Doors
+        for (DoorBlock block : PanelGroup.DOOR_BLOCKS) {
+            gen.registerDoor(block);
+        }
     }
 
     @Override
     public void generateItemModels(ItemModelGenerator itemGen) {
-
         createShelfItem(itemGen, ShelvesBlock.OAK_SHELF);
         createShelfItem(itemGen, ShelvesBlock.SPRUCE_SHELF);
         createShelfItem(itemGen, ShelvesBlock.BIRCH_SHELF);
@@ -341,7 +297,6 @@ public class ModModelProvider extends FabricModelProvider {
                                         BlockStateVariant.create().put(VariantSettings.MODEL, xSouthTop))
                                 .register(Direction.Axis.X, HorizontalQuarterBlock.QuarterPart.TOP_LEFT,
                                         BlockStateVariant.create().put(VariantSettings.MODEL, xNorthTop))
-
                                 .register(Direction.Axis.Z, HorizontalQuarterBlock.QuarterPart.BOTTOM_LEFT,
                                         BlockStateVariant.create().put(VariantSettings.MODEL, zWestBottom))
                                 .register(Direction.Axis.Z, HorizontalQuarterBlock.QuarterPart.BOTTOM_RIGHT,
