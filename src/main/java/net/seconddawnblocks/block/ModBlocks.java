@@ -101,9 +101,6 @@ public class ModBlocks {
             new VerticalQuarterBlock(AbstractBlock.Settings.create().strength(2.0f).requiresTool().nonOpaque())
     );
 
-    public static final Block CONDUIT = registerBlock("conduit",
-            new PillarBlock(AbstractBlock.Settings.copy(Blocks.JUNGLE_LOG).nonOpaque())
-    );
 
    /* public static final Block SurfaceGray_OrangeLight = registerBlock("surfacegray_orangelight",
             new PillarBlock(AbstractBlock.Settings.copy(Blocks.JUNGLE_LOG).nonOpaque())
@@ -152,7 +149,6 @@ public class ModBlocks {
                         entries.add(ShelvesBlock.WARPED_SHELF.asItem());
 
                         //OfficialBlocks
-                        entries.add(ModBlocks.CONDUIT.asItem());
                         //entries.add(ModBlocks.SurfaceGray_OrangeLight.asItem());
 
 
