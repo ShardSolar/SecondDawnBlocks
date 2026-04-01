@@ -144,7 +144,7 @@ public class PanelGroup {
             "chevron_planks",
             "coal_black_hull",
             "coffee_gray_hull",
-            "conduit",
+            "conduitm",
             "conveyor_belt",
             "conveyor_belt_mirrored",
             "crimson_sandstone",
