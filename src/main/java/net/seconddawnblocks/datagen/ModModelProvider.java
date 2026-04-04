@@ -14,6 +14,7 @@ import net.minecraft.data.client.TextureKey;
 import net.minecraft.data.client.TextureMap;
 import net.minecraft.data.client.VariantSettings;
 import net.minecraft.data.client.VariantsBlockStateSupplier;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import net.seconddawnblocks.SecondDawnBlocks;
@@ -97,6 +98,18 @@ public class ModModelProvider extends FabricModelProvider {
             TextureKey.ALL, TextureKey.PARTICLE
     );
 
+    private static final Model PILLAR_VERTICAL_MODEL = new Model(
+            Optional.of(Identifier.ofVanilla("block/cube_column")),
+            Optional.empty(),
+            TextureKey.END, TextureKey.SIDE
+    );
+
+    private static final Model PILLAR_HORIZONTAL_MODEL = new Model(
+            Optional.of(Identifier.ofVanilla("block/cube_column_horizontal")),
+            Optional.empty(),
+            TextureKey.END, TextureKey.SIDE
+    );
+
     public ModModelProvider(FabricDataOutput output) {
         super(output);
     }
@@ -114,7 +127,6 @@ public class ModModelProvider extends FabricModelProvider {
         }
         registerQuarterPool(gen, quarterPool);
 
-        // Shelves
         createShelf(gen, ShelvesBlock.OAK_SHELF);
         createShelf(gen, ShelvesBlock.SPRUCE_SHELF);
         createShelf(gen, ShelvesBlock.BIRCH_SHELF);
@@ -148,6 +160,8 @@ public class ModModelProvider extends FabricModelProvider {
 
         // Panels
         for (int i = 0; i < PanelGroup.NUM_PANELS; i++) {
+            String panelName = PanelGroup.PANELS[i];
+
             Block baseBlock = PanelGroup.BASE_BLOCKS.get(i);
             Block stairsBlock = PanelGroup.STAIRS_BLOCKS.get(i);
             Block slabBlock = PanelGroup.SLAB_BLOCKS.get(i);
@@ -156,21 +170,27 @@ public class ModModelProvider extends FabricModelProvider {
             Block verticalQuarterBlock = PanelGroup.VERTICAL_QUARTER_BLOCKS.get(i);
             Block horizontalQuarterBlock = PanelGroup.HORIZONTAL_QUARTER_BLOCKS.get(i);
 
-            BlockStateModelGenerator.BlockTexturePool pool =
-                    gen.registerCubeAllModelTexturePool(baseBlock);
+            if (PanelGroup.PILLAR_BASE_PANELS.contains(panelName)) {
+                // Base block only. Pillar-family stairs/slabs/walls are handled
+                // by PillarFamilyProvider to avoid duplicate blockstate/model writes.
+                registerPillarBlock(gen, baseBlock, TextureMap.getId(baseBlock));
+                gen.registerTrapdoor(trapdoorBlock);
+            } else {
+                BlockStateModelGenerator.BlockTexturePool pool =
+                        gen.registerCubeAllModelTexturePool(baseBlock);
 
-            gen.registerParentedItemModel(baseBlock, ModelIds.getBlockModelId(baseBlock));
+                gen.registerParentedItemModel(baseBlock, ModelIds.getBlockModelId(baseBlock));
 
-            pool.stairs(stairsBlock);
-            pool.slab(slabBlock);
-            pool.wall(wallBlock);
-            gen.registerTrapdoor(trapdoorBlock);
+                pool.stairs(stairsBlock);
+                pool.slab(slabBlock);
+                pool.wall(wallBlock);
+                gen.registerTrapdoor(trapdoorBlock);
+            }
 
             registerVerticalQuarterBlock(gen, verticalQuarterBlock, TextureMap.getId(baseBlock));
             registerHorizontalQuarterBlock(gen, horizontalQuarterBlock, TextureMap.getId(baseBlock));
         }
 
-        // Doors
         for (DoorBlock block : PanelGroup.DOOR_BLOCKS) {
             gen.registerDoor(block);
         }
@@ -189,6 +209,45 @@ public class ModModelProvider extends FabricModelProvider {
         createShelfItem(itemGen, ShelvesBlock.BAMBOO_SHELF);
         createShelfItem(itemGen, ShelvesBlock.CRIMSON_SHELF);
         createShelfItem(itemGen, ShelvesBlock.WARPED_SHELF);
+    }
+
+    private void registerPillarBlock(BlockStateModelGenerator gen, Block block, Identifier texture) {
+        TextureMap textures = new TextureMap()
+                .put(TextureKey.SIDE, texture)
+                .put(TextureKey.END, texture)
+                .put(TextureKey.PARTICLE, texture);
+
+        Identifier verticalModel = PILLAR_VERTICAL_MODEL.upload(
+                ModelIds.getBlockSubModelId(block, "_pillar"),
+                textures,
+                gen.modelCollector
+        );
+
+        Identifier horizontalModel = PILLAR_HORIZONTAL_MODEL.upload(
+                ModelIds.getBlockSubModelId(block, "_pillar_horizontal"),
+                textures,
+                gen.modelCollector
+        );
+
+        VariantsBlockStateSupplier supplier = VariantsBlockStateSupplier.create(block)
+                .coordinate(
+                        BlockStateVariantMap.create(Properties.AXIS)
+                                .register(Direction.Axis.Y,
+                                        BlockStateVariant.create()
+                                                .put(VariantSettings.MODEL, verticalModel))
+                                .register(Direction.Axis.X,
+                                        BlockStateVariant.create()
+                                                .put(VariantSettings.MODEL, horizontalModel)
+                                                .put(VariantSettings.X, VariantSettings.Rotation.R90)
+                                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                                .register(Direction.Axis.Z,
+                                        BlockStateVariant.create()
+                                                .put(VariantSettings.MODEL, horizontalModel)
+                                                .put(VariantSettings.X, VariantSettings.Rotation.R90))
+                );
+
+        gen.blockStateCollector.accept(supplier);
+        gen.registerParentedItemModel(block, verticalModel);
     }
 
     private void registerQuarterPool(BlockStateModelGenerator gen, QuarterBlockTexturePool pool) {

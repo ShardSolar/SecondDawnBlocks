@@ -90,8 +90,8 @@ public class ModBlocks {
     public static final Block TEST_CORNER_STAIRS = registerBlock("test_corner_stairs",
             new CornerStairs(AbstractBlock.Settings.copy(Blocks.OAK_STAIRS)));
 
-    public static final Block TEST_TILE = registerBlock("test_tile",
-            new TileBlock(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK)));
+    /*public static final Block TEST_TILE = registerBlock("test_tile",
+            new TileBlock(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK)));*/
 
     public static final Block HORIZONTAL_QUARTER_BLOCK = registerBlock("horizontal_quarter_block",
             new HorizontalQuarterBlock(AbstractBlock.Settings.create().strength(2.0f).requiresTool().nonOpaque())

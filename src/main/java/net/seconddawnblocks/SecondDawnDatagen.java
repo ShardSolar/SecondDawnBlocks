@@ -17,6 +17,7 @@ public class SecondDawnDatagen implements DataGeneratorEntrypoint {
 		// Model provider(s)
 		pack.addProvider(ModModelProvider::new);
 		pack.addProvider(ModEnglishLangProvider::new);
+		pack.addProvider(PillarFamilyProvider::new);
 
 		// Your vertical layers provider (the one that uses CachedOutput/DataProvider.writeToPath)
 		pack.addProvider(VerticalLayerProvider::new);
