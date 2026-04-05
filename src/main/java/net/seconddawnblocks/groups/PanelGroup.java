@@ -661,7 +661,28 @@ public class PanelGroup {
     ));
 
     public static final Set<String> PILLAR_BASE_PANELS = new HashSet<>(Set.of(
-            "surfacelightgray_bluelight"
+            "surfacelightgray_bluelight",
+            "surfacegray_orangelight",
+            "surfacegray_light",
+            "surfacewhite_bluelight",
+            "surfaceblack_redlight",
+            "strippedgraypanel",
+            "grayborder_redpanel",
+            "ventblock",
+            "cut_lightgrayhalfpanels",
+            "corridor1",
+            "lightgrayhalfpanels",
+            "darkgray_texturedstripe",
+            "black_large_bolted_pipe",
+            "black_large_pipe",
+            "black_double_pipe",
+            "darkgray_halfpanel_ventblock",
+            "trimetalpanel",
+            "black_conduit",
+            "black_chiseled_quartz"
+
+
+
     ));
 
     private static final Set<String> TRANSPARENT_BASE_PANELS = new HashSet<>(Set.of(
